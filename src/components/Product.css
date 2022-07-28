@@ -37,3 +37,9 @@
         width:100%
     }
 
+.sach{
+    border-radius: 0;
+    background-color: '#FCA510';
+    height: 20px;
+    padding: 12px;
+}

@@ -1,5 +1,8 @@
 import React from 'react'
+import './Cart.css'
+
 import { CartProvider, useCart } from "react-use-cart";
+import { BsDashCircle, BsPlusCircle, BsXCircle } from 'react-icons/bs';
 
 
 
@@ -10,15 +13,25 @@ function Cart() {
         items,
         updateItemQuantity,
         removeItem,
-        cartTotal
+        cartTotal,
+        emptyCart
       } = useCart();
     
-      if (isEmpty) return <p className="text-sm">Your cart is empty</p>;
+      if (isEmpty) return(
+        <>
+        <nav className="navbar navbar-light bg-light">
+        <div className="container-fluid">
+          <a href="/" className="text-dark head text-uppercase" >Home</a>
+        </div>
+      </nav>
+      <p className="text-sm text-center">Your cart is empty</p>
+        </>
+      ) ;
   return (
     <div className="container mt-4 mb-4">
             <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
-          <a href="/" style={{textDecoration:'none'}}>Home</a>
+          <a href="/" className="text-dark head text-uppercase" >Home</a>
         </div>
       </nav>
       <div className="row mt-4 mb-4">
@@ -27,46 +40,40 @@ function Cart() {
     <h6 className="text-sm">Cart ({totalUniqueItems})
     <span className="text-sm float-end">Cart total : ksh {cartTotal}</span></h6>
 
-    
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col"><p className="text-sm">Item</p></th>
-      <th scope="col"><p className="text-sm">Quantity</p></th>
-      <th scope="col">Action</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
+  <div className="card shadow-lg">
+  <div className="card-body">
+
   {items.map((item) => (
-  <tbody>
-    <tr key={item.id}>
-      <td>
-        <small className="text-sm">{item.title}</small>
-      </td>
-      <td>
-        <p className="text-sm">{item.quantity}</p>
-      </td>
-      <td>
-      <button className="btn btn-outline-primary btn-sm m-2"
-            onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
-          >
-            +
-          </button>
+    <div key={item.id} 
+    className="container">
+      <div className='row mt-2 mb-2 justify-content-between shadow-sm p-2'>
 
-      <button className="btn btn-outline-danger btn-sm m-2"
-            onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
-          >
-            -
-          </button>
+    <div className='col-md-4'>
+    <small className="text-sm">{item.title}</small>
+    </div>
+    <div className='col-md-4 '>  
 
-      <button className="btn btn-outline-danger btn-sm m-2" onClick={() => removeItem(item.id)}>&times;</button>
-      </td>
-    </tr>
+          <BsDashCircle size={20} style={{marginLeft:20, marginRight:20}} onClick={() => updateItemQuantity(item.id, item.quantity - 1)}/>
 
-  </tbody>
+    {item.quantity}
+          <BsPlusCircle size={20} style={{marginLeft:20}} onClick={() => updateItemQuantity(item.id, item.quantity + 1)}/>
+
+ 
+    </div>
+    <div className='col-md-4'>
+        <BsXCircle size={20} style={{color:'red', marginRight:'auto'}} onClick={() => removeItem(item.id)}/>
+        {/* <BsXCircle size={20} onClick={() => emptyCart()}/> */}
+
+      </div>
+
+    </div>
+    </div>
+
+
   ))}
-</table>
+    </div>  
+    </div>  
+
 </div>
 <div className="col-md-2"></div>
 </div>
