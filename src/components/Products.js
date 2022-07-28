@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import { CartProvider, useCart } from "react-use-cart";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BsFillCartFill } from "react-icons/bs";
+
+
+
+
 
 
 function Products() {
-  const { addItem } = useCart();
+  
+  const { addItem, totalUniqueItems } = useCart();
 
   const [products, setProducts] = useState([
     {
@@ -52,12 +58,27 @@ function Products() {
   
   return (
     <div className="container mt-4 mb-4">
-            <input
+      <nav className="navbar navbar-light bg-light">
+        <div className="container-fluid">
+          <form className="d-flex">
+            <input className="form-control me-2" type="search" placeholder="Search" 
+                      onChange={(e) => {
+                        setSearch(e.target.value.toLowerCase());
+                      }}
+            aria-label="Search"/>
+            {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
+          </form>
+          <a href="/cart" style={{textDecoration:'none'}}>
+            <BsFillCartFill /> 
+            ({totalUniqueItems})</a>
+        </div>
+      </nav>
+            {/* <input
           className="input"
           onChange={(e) => {
             setSearch(e.target.value.toLowerCase());
           }}
-        />
+        /> */}
         <div className="row mt-2 mb-2">
         <div className="col-md-10 mt-2 mb-2"></div>
 
@@ -73,6 +94,7 @@ function Products() {
             <p className="text-sm text-muted card-text">{product.category}</p>
 
             <button className="btn btn-warning btn-sm" onClick={() => addItem(product)}>Add to cart</button>
+            
             </div>
             </div>
 

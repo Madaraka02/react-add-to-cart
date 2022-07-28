@@ -2,6 +2,7 @@ import React from 'react'
 import { CartProvider, useCart } from "react-use-cart";
 
 
+
 function Cart() {
     const {
         isEmpty,
@@ -14,6 +15,14 @@ function Cart() {
       if (isEmpty) return <p className="text-sm">Your cart is empty</p>;
   return (
     <div className="container mt-4 mb-4">
+            <nav className="navbar navbar-light bg-light">
+        <div className="container-fluid">
+          <a href="/" style={{textDecoration:'none'}}>Home</a>
+        </div>
+      </nav>
+      <div className="row mt-4 mb-4">
+<div className="col-md-2"></div>
+        <div className="col-md-8">
     <h6 className="text-sm">Cart ({totalUniqueItems})</h6>
     
   <table class="table">
@@ -30,7 +39,7 @@ function Cart() {
   <tbody>
     <tr key={item.id}>
       <td>
-        <p className="text-sm">{item.title}</p>
+        <small className="text-sm">{item.title}</small>
       </td>
       <td>
         <p className="text-sm">{item.quantity}</p>
@@ -56,6 +65,9 @@ function Cart() {
   </tbody>
   ))}
 </table>
+</div>
+<div className="col-md-2"></div>
+</div>
   </div>
   )
 }
