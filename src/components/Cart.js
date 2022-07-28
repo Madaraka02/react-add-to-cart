@@ -25,7 +25,7 @@ function Cart() {
 <div className="col-md-2"></div>
         <div className="col-md-8">
     <h6 className="text-sm">Cart ({totalUniqueItems})
-    <span className="text-sm float-end">Cart total :{cartTotal}</span></h6>
+    <span className="text-sm float-end">Cart total : ksh {cartTotal}</span></h6>
 
     
   <table class="table">
@@ -33,9 +33,9 @@ function Cart() {
     <tr>
       <th scope="col"><p className="text-sm">Item</p></th>
       <th scope="col"><p className="text-sm">Quantity</p></th>
-      <th scope="col"><p className="text-sm">Add</p></th>
-      <th scope="col"><p className="text-sm">Remove</p></th>
-      <th scope="col"><p className="text-sm">Delete</p></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   {items.map((item) => (
