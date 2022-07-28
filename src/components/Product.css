@@ -1,0 +1,39 @@
+.card{
+    /* background-color: whitesmoke; */
+    border: 0;
+    border-radius: 0;
+}
+.pic{
+    height: 120px;
+    width: 100%;
+    object-fit: contain;
+}
+.title{
+    font-size: small;
+    font-weight: 300;
+    margin-top: 5px;
+}         
+.price{
+    font-size: small;
+    font-weight: 200;
+}
+.category{
+    font-size: small;
+    font-weight: 100;
+}
+.prod{
+    /* background-color: whitesmoke; */
+}
+.bad{
+    border: 0;
+    border-radius: 0;
+}
+.add{
+    color: white;
+}
+.add:hover{
+        border: 0;
+        border-radius: 0;
+        width:100%
+    }
+

@@ -1,7 +1,9 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import Products from './components/Products';
 import Cart from './components/Cart';
+import Sliding from './components/Sliding';
+
 import { CartProvider, useCart } from "react-use-cart";
 import { useState } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
@@ -22,6 +24,8 @@ function App() {
   return (
     <div className="container mt-2 mb-2">
        <CartProvider>
+      <Sliding/>
+
        <Routes>
         <Route path="/" element={<Products />} />
         <Route path="cart" element={<Cart />} />
